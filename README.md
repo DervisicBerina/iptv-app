@@ -1,12 +1,7 @@
 IPTV-APP
 
+## Project Proposal
 
-[![Build Status](https://travis-ci.org/meanjs/mean.svg?branch=master)](https://travis-ci.org/meanjs/mean)
-[![Dependencies Status](https://david-dm.org/meanjs/mean.svg)](https://david-dm.org/meanjs/mean)
-[![Coverage Status](https://coveralls.io/repos/meanjs/mean/badge.svg?branch=master&service=github)](https://coveralls.io/github/meanjs/mean?branch=master)
-[![Known Vulnerabilities](https://snyk.io/test/github/meanjs/mean/badge.svg)](https://snyk.io/test/github/meanjs/mean)
-
-MEAN.JS is a full-stack JavaScript open-source solution, which provides a solid starting point for [MongoDB](http://www.mongodb.org/), [Node.js](http://www.nodejs.org/), [Express](http://expressjs.com/), and [AngularJS](http://angularjs.org/) based applications. The idea is to solve the common issues with connecting those frameworks, build a robust framework to support daily development needs, and help developers use better practices while working with popular JavaScript components.
 
 ## Before You Begin
 Before you begin we recommend you read about the basic building blocks that assemble a MEAN.JS application:
@@ -27,11 +22,11 @@ Make sure you have installed all of the following prerequisites on your developm
 $ npm install -g bower
 ```
 
-## Downloading MEAN.JS
-There are several ways you can get the MEAN.JS boilerplate:
+## Downloading iptv-app 
+here are several ways you can get the iptv-app:
 
 ### Cloning The GitHub Repository
-The recommended way to get MEAN.js is to use git to directly clone the MEAN.JS repository:
+The recommended way to get iptv-app  is to use git to directly clone the iptv-app repository:
 
 ```bash
 $ git clone https://github.com/meanjs/mean.git meanjs
