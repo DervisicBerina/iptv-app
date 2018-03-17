@@ -18,7 +18,7 @@
       $rootScope.$on('$stateChangeSuccess', listener);
 
       function listener(event, toState) {
-        var applicationCoreTitle = 'MEAN.js',
+        var applicationCoreTitle = 'My IPTV',
           separator = ' - ',
           stateTitle = applicationCoreTitle + separator;
 
