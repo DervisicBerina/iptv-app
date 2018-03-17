@@ -1,6 +1,7 @@
 IPTV-APP
 
 ## Project Proposal
+The plan is to make a web application where users can log in and watch channels. The application will be responsive, so that it can be used on computers or phones.
 
 
 ## Before You Begin
@@ -29,25 +30,23 @@ here are several ways you can get the iptv-app:
 The recommended way to get iptv-app  is to use git to directly clone the iptv-app repository:
 
 ```bash
-$ git clone https://github.com/meanjs/mean.git meanjs
+$ git clone https://github.com/DervisicBerina/iptv-app.git iptv-app
 ```
 
-This will clone the latest version of the MEAN.JS repository to a **meanjs** folder.
+This will clone the latest version of the iptv-app repository to a **iptv-app** folder.
 
 ### Downloading The Repository Zip File
-Another way to use the MEAN.JS boilerplate is to download a zip copy from the [master branch on GitHub](https://github.com/meanjs/mean/archive/master.zip). You can also do this using the `wget` command:
+Another way to use the iptv-app boilerplate is to download a zip copy from the [master branch on GitHub](https://github.com/iptv-app/mean/archive/master.zip). You can also do this using the `wget` command:
 
 ```bash
-$ wget https://github.com/meanjs/mean/archive/master.zip -O meanjs.zip; unzip meanjs.zip; rm meanjs.zip
+$ wget https://github.com/DervisicBerina/iptv-app.zip -O iptv-app.zip; unzip iptv-app.zip; rm iptv-app.zip
 ```
 
 Don't forget to rename **mean-master** after your project name.
 
-### Yo Generator
-Another way would be to use the [Official Yo Generator](http://meanjs.org/generator.html), which generates a copy of the MEAN.JS 0.4.x boilerplate and supplies an application generator to ease your daily development cycles.
 
 ## Quick Install
-Once you've downloaded the boilerplate and installed all the prerequisites, you're just a few steps away from starting to develop your MEAN application.
+Once you've downloaded the boilerplate and installed all the prerequisites, you're just a few steps away from starting to develop your iptv application.
 
 The boilerplate comes pre-bundled with a `package.json` and `bower.json` files that contain the list of modules you need to start your application.
 
@@ -169,75 +168,6 @@ $ gulp prod
 
 It is also possible to run any Gulp tasks using npm's run command and therefore use locally installed version of gulp, for example: `npm run gulp eslint`
 
-## Development and deployment With Docker
-
-* Install [Docker](https://docs.docker.com/installation/#installation)
-* Install [Compose](https://docs.docker.com/compose/install/)
-
-* Local development and testing with compose:
-```bash
-$ docker-compose up
-```
-
-* Local development and testing with just Docker:
-```bash
-$ docker build -t mean .
-$ docker run -p 27017:27017 -d --name db mongo
-$ docker run -p 3000:3000 --link db:db_1 mean
-$
-```
-
-* To enable live reload, forward port 35729 and mount /app and /public as volumes:
-```bash
-$ docker run -p 3000:3000 -p 35729:35729 -v /Users/mdl/workspace/mean-stack/mean/public:/home/mean/public -v /Users/mdl/workspace/mean-stack/mean/app:/home/mean/app --link db:db_1 mean
-```
-
-### Production deploy with Docker
-
-* Production deployment with compose:
-```bash
-$ docker-compose -f docker-compose-production.yml up -d
-```
-
-* Production deployment with just Docker:
-```bash
-$ docker build -t mean -f Dockerfile-production .
-$ docker run -p 27017:27017 -d --name db mongo
-$ docker run -p 3000:3000 --link db:db_1 mean
-```
-
-## Deploying to PAAS
-
-###  Deploying MEANJS To Heroku
-
-By clicking the button below you can signup for Heroku and deploy a working copy of MEANJS to the cloud without having to do the steps above.
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-
-### Amazon S3 configuration
-
-To save the profile images to S3, simply set those environment variables:
-UPLOADS_STORAGE: s3
-S3_BUCKET: the name of the bucket where the images will be saved
-S3_ACCESS_KEY_ID: Your S3 access key
-S3_SECRET_ACCESS_KEY: Your S3 access key password
-
-## Getting Started With MEAN.JS
-You have your application running, but there is a lot of stuff to understand. We recommend you go over the [Official Documentation](http://meanjs.org/docs.html).
-In the docs we'll try to explain both general concepts of MEAN components and give you some guidelines to help you improve your development process. We tried covering as many aspects as possible, and will keep it updated by your request. You can also help us develop and improve the documentation by checking out the *gh-pages* branch of this repository.
-
-## Community
-* Use the [Official Website](http://meanjs.org) to learn about changes and the roadmap.
-* Join #meanjs on freenode.
-* Discuss it in the new [Google Group](https://groups.google.com/d/forum/meanjs)
-* Ping us on [Twitter](http://twitter.com/meanjsorg) and [Facebook](http://facebook.com/meanjs)
-
-## Contributing
-We welcome pull requests from the community! Just be sure to read the [contributing](https://github.com/meanjs/mean/blob/master/CONTRIBUTING.md) doc to get started.
-
-## Credits
-Inspired by the great work of [Madhusudhan Srinivasa](https://github.com/madhums/)
-The MEAN name was coined by [Valeri Karpov](http://blog.mongodb.org/post/49262866911/the-mean-stack-mongodb-expressjs-angularjs-and).
 
 ## License
 [The MIT License](LICENSE.md)
