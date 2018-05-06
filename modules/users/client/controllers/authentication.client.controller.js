@@ -82,7 +82,7 @@
       vm.authentication.user = response;
       Notification.info({ message: 'Welcome ' + response.firstName });
       // And redirect to the previous or home page
-      $state.go($state.previous.state.name || 'home', $state.previous.params);
+      $state.go('channels.list' || $state.previous.state.name, $state.previous.params);
     }
 
     function onUserSigninError(response) {

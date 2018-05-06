@@ -3,14 +3,23 @@
   
     angular
       .module('users')
-      .controller('ChannelListControllers', ChannelListController);
+      .controller('ChannelListController', ChannelListController);
   
-      ChannelListController.$inject = ['$scope', 'Authentication'];
+      ChannelListController.$inject = ['$scope','ChannelsService','Authentication'];
   
-    function ChannelListController($scope, Authentication) {
+    function ChannelListController($scope,ChannelsService,Authentication) {
+      
       var vm = this;
-  
-      vm.user = Authentication.user;
+      vm.user = Authentication.user; 
+      console.log("lista"); 
+      //getChannels();
     }
+
+    /*function getChannels(){
+      var channelList = ChannelsService.loadChannels();
+
+      console.log("list " + channelList);
+      
+    }*/
   }());
   
