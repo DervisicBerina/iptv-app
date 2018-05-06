@@ -10,16 +10,15 @@
     function ChannelListController($scope,ChannelsService,Authentication) {
       
       var vm = this;
+      vm.channelList = getChannels();
       vm.user = Authentication.user; 
       console.log("lista"); 
-      //getChannels();
+      
+      function getChannels(){
+        return ChannelsService.loadChannels();
+      }
     }
 
-    /*function getChannels(){
-      var channelList = ChannelsService.loadChannels();
-
-      console.log("list " + channelList);
-      
-    }*/
+    
   }());
   
