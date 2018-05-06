@@ -123,6 +123,25 @@
         data: {
           pageTitle: 'Password reset form'
         }
+      })
+      .state('channels', {
+        abstract: true,
+        url: '/channels',
+        templateUrl: '/modules/users/client/views/channels/channels.client.view.html',
+        controller: 'ChannelsController',
+        controllerAs: 'vm',
+        data: {
+          roles: ['user', 'admin']
+        }
+      })
+      .state('channels.list', {
+        url: '/list',
+        templateUrl: '/modules/users/client/views/channels/channel-list.client.view.html',
+        controller: 'ChannelListController',
+        controllerAs: 'vm',
+        data: {
+          pageTitle: 'Channels'
+        }
       });
   }
 }());
