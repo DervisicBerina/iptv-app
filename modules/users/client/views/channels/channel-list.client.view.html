@@ -1,11 +1,14 @@
-<section style="width: 200px; height:500px; background-color:blue;">
-
-        <div class="list-group">
+<section>
+  <script src="/modules/core/client/css/core.css"></script>
+  <meta name="viewpoint" content="width=device-width,initial-scale=1">
+  <div class="vertical-menu">
                 <a ng-repeat="channel in vm.channelList" class="list-group-item">
                   <h4 class="list-group-item-heading" ng-bind="channel.name"></h4>
                 </a>
-              </div>
-
-
-
+              </div>          
+              <section style="width: 300px; height:200px;background-color:grey;"></section>
+              
+<!--  <div class="footer">
+    <p>Footer</p>
+  </div> -->
 </section>

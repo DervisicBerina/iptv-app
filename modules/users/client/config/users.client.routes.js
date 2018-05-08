@@ -142,6 +142,25 @@
         data: {
           pageTitle: 'Channels'
         }
+      })
+      .state('radio', {
+        abstract: true,
+        url: '/radio',
+        templateUrl: '/modules/users/client/views/radio/radio.client.view.html',
+        controller: 'RadioController',
+        controllerAs: 'vm',
+        data: {
+          roles: ['user', 'admin']
+        }
+      })
+      .state('radio.list', {
+        url: '/list',
+        templateUrl: '/modules/users/client/views/radio/radio-list.client.view.html',
+        controller: 'RadioListController',
+        controllerAs: 'vm',
+        data: {
+          pageTitle: 'Radio'
+        }
       });
   }
 }());
