@@ -48,28 +48,7 @@ a:hover .header-profile-image {
     color:whitesmoke;
     
   }
- /*h3{
-  font-weight: bold;
-  position: absolute;;
-  top: 20%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  ;
-}
-h4{
-  position: absolute;
-  transform: translate(-50%, -50%);
-  left: 50%;
-}
-.image{
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  left: 0;
-  background-size: 100% 100%;
-  background-position: center top;
-
-}*/
+ 
 .footer {
   position: fixed;
   left: 0;
@@ -222,7 +201,10 @@ h4{
     -o-animation-delay: 30s;
     -ms-animation-delay: 30s;
     animation-delay: 30s; 
-}
+ }
+ ul {
+    list-style-type: none;
+}         
 /* Animation for the slideshow images */
 @-webkit-keyframes imageAnimation { 
     0% { opacity: 0;
