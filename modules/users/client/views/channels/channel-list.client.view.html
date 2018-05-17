@@ -1,4 +1,5 @@
 <section>
+  <div class="channel-page">
   <script src="/modules/core/client/css/core.css"></script>
   <!--left menu section-->
   <meta name="viewpoint" content="width=device-width,initial-scale=1">
@@ -8,14 +9,24 @@
                   <h4 class="list-group-item-heading" ng-bind="channel.name"></h4>
                 </a>
   </div>
- <div style="width: 300px; height:150px;background-color:grey;"></div>
+ <div style="width: 300px; height:150px; background-color:black; "></div>
 </div> 
 <!--player section-->    
-    <div style="background-color: blue; height:650px;"></div>
+    <div style=" height:650px;"></div>
 <!--footer section-->
-    <div style="background-color: darkred; height:150px; margin-left:300px;">
+    <div style=" height:150px; margin-left:300px;background-color:black;">
      <div style="width:40%; height:150px; float:left;"></div>
-     <div style="width:20%; height:150px; float:left;"></div>
+     <div style="width:20%; height:150px; float:left;">
+        <div class="player">
+            <figure class="left_icon">    
+              <div class="btns">
+                <a class="back icon-backward" href="#"></a>
+                <a class="play icon-play" href="#"></a>
+                <a class="forward icon-forward" href="#"></a>      
+              </div>  
+          </div>
+     </div>
      <div style="width:40%; height:150px; float:left;"></div>
     </div>
+  </div>
 </section>
