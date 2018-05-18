@@ -5,26 +5,40 @@
   <meta name="viewpoint" content="width=device-width,initial-scale=1">
 <div style="width:300px; height:100%; float:left;">
   <div class="vertical-menu" style="height:650px;">
-                <a ng-repeat="channel in vm.channelList" class="list-group-item">
-                  <h4 class="list-group-item-heading" ng-bind="channel.name"></h4>
-                </a>
+                <div ng-repeat="channel in vm.channelList" class="list-group-item">
+                  <img style="width:50px; height:50px;float:left;padding-top: 8px;" src="/modules/core/client/img/brand/bht_icon.jpg" >
+                  <span ng-click="vm.changeCurrentChannel(channel)" class="glyphicon glyphicon-play-circle" style="float: right; padding-top: 18px;font-size: 22px;"></span>
+                  <h4  class="list-group-item-heading" style="text-align:left;padding-left:70px;height:55px;padding-top: 20px;" ng-bind="channel.name" ></h4>
+
+                </div>
   </div>
- <div style="width: 300px; height:150px; background-color:black; "></div>
-</div> 
-<!--player section-->    
-    <div style=" height:650px;"></div>
+ <div style="width: 300px; height:140px; background-color:black; ">
+   <img style="width:100px; height:100px;padding-top: 50px;float: left;padding-left: 20px;" src="/modules/core/client/img/brand/bht_icon.jpg">
+   <h4 style="color: white; padding-left: 120px; padding-top: 68px;" ng-bind="vm.currentChannel"></h4>
+ </div>
+</div>
+<!--player section-->
+    <div style=" height:650px;">
+
+      <video height="100%" controls>
+        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+        <source src="https://www.w3schools.com/html/mov_bbb.mp4 type="video/ogg">
+        Your browser does not support HTML5 video.
+      </video>
+
+    </div>
 <!--footer section-->
     <div style=" height:150px; margin-left:300px;background-color:black;">
      <div style="width:40%; height:150px; float:left;"></div>
      <div style="width:20%; height:150px; float:left;">
         <div class="player">
-            <figure class="left_icon">    
+            <figure class="left_icon">
               <div class="btns">
                 <a class="back icon-backward" href="#"></a>
                 <a class="play icon-play" href="#"></a>
-                <a class="forward icon-forward" href="#"></a>      
-              </div>  
-          </div> 
+                <a class="forward icon-forward" href="#"></a>
+              </div>
+          </div>
      </div>
      <div style="width:40%; height:150px; float:left;"></div>
     </div>
