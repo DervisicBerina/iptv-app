@@ -35,10 +35,10 @@
     <!--footer section-->
     <div style=" height:150px; margin-left:300px;background-color:black;">
       <div style="width:40%; height:150px; float:left;padding-top: 20px;color: white;">
-        <h4>liga prvaka Real Madrid</h4>
+        <h4>{{vm.tempPlayingContent}}</h4>
         <div>
           <h5 style="float:left; background-color:#2e6da4;padding:3px;">ON NOW </h5>
-          <h5 style="float:left; padding-left:15px;padding:3px;"> 15:00 - 16:00</h5>
+          <h5 style="float:left; padding-left:15px;padding:3px;"> {{vm.tempPlayingTime}}</h5>
         </div>
       </div>
       <div style="width:20%; height:150px; float:left;">
@@ -52,10 +52,10 @@
         </div>
       </div>
       <div style="width:40%; height:150px; float:left;padding-top: 20px;color: white;">
-        <h4><span>NEXT: </span>liga prvaka Real Madrid</h4>
+        <h4><span>NEXT: </span>{{vm.nextPlayingContent}}</h4>
         <div>
           <h5 style="float:left; background-color:red;padding:3px;">NEXT: </h5>
-          <h5 style="float:left; padding-left:15px;padding:3px;"> 16:00 - 17:00</h5>
+          <h5 style="float:left; padding-left:15px;padding:3px;">{{vm.nextPlayingTime}}</h5>
         </div>
       </div>
     </div>
