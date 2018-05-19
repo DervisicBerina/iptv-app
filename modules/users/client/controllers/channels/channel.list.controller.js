@@ -12,17 +12,21 @@
       var vm = this;
       vm.channelList = getChannels();
       vm.user = Authentication.user;
-      vm.currentChannel = "nesto";
+      vm.currentChannel = vm.channelList[0];
       vm.changeCurrentChannel = changeCurrentChannel;
-      console.log("lista");
+      vm.playChannel = playChannel;
 
       function changeCurrentChannel(channel) {
-        vm.currentChannel = channel.name;
-        console.log("nestooo");
+        vm.currentChannel = channel;
       }
 
       function getChannels(){
         return ChannelsService.loadChannels();
+      }
+
+      function playChannel() {
+        console.log("playing.. " + vm.currentChannel.name);
+
       }
     }
 
