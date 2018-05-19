@@ -10,11 +10,11 @@
     function ChannelListController($scope,ChannelsService,Authentication) {
 
       var vm = this;
-      vm.channelList = getChannels();
+      vm.channelList = getRadio();
       vm.user = Authentication.user;
       vm.currentChannel = vm.channelList[0];
-      vm.changeCurrentChannel = changeCurrentChannel;
-      vm.playChannel = playChannel;
+      vm.changeCurrentRadioChannel = changeCurrentRadioChannel;
+      vm.playRadioChannel = playRadioChannel;
 
       vm.tempPlayingContent = "Liga prvaka Real Madrid";
       vm.nextPlayingContent = "Alihemija bosanskog drustva";
@@ -23,14 +23,23 @@
 
       function changeCurrentChannel(channel) {
         vm.currentChannel = channel;
+        vm.playRadioChannel(channel.url);
       }
 
-      function getChannels(){
+      function getRadio(){
         return ChannelsService.loadChannels();
       }
 
-      function playChannel() {
-        console.log("playing.. " + vm.currentChannel.name);
+      function playChannel(channelUrl) {
+        console.log("playing.. " + vm.currentChannel.url);
+
+        var video = document.getElementById('video');
+        var source = document.createElement('source');
+
+        source.setAttribute('src', channelUrl);
+
+        video.appendChild(source);
+        video.play();
 
       }
     }

@@ -1,13 +1,13 @@
 (function () {
     'use strict';
-  
+
     // Users service used for communicating with the users REST endpoint
     angular
       .module('users.services')
       .factory('ChannelsService', ChannelsService);
-  
+
       ChannelsService.$inject = ['$resource'];
-  
+
     function ChannelsService($resource) {
       var Channels = $resource('/api/channels', {}, {
         update: {
@@ -28,14 +28,14 @@
             return getChannels();
         }
       });
-  
+
       return Channels;
     }
 
     function getChannels(){
         var channels = [
-            {'id':127,'name':'BHT1 HD','number':1,'censored':0,'genre_id':'svi-kanali','favorite':0,'archive':1,'archive_range':120,'pvr':0,'monitoring_status':1,'logo':'\/interface\/misc\/logos\/320\/127.jpg','url':''},
-            {'id':128,'name':'FTV','number':1,'censored':0,'genre_id':'svi-kanali','favorite':0,'archive':1,'archive_range':120,'pvr':0,'monitoring_status':1,'logo':'\/interface\/misc\/logos\/320\/127.jpg','url':''},
+            {'id':127,'name':'BHT1 HD','number':1,'censored':0,'genre_id':'svi-kanali','favorite':0,'archive':1,'archive_range':120,'pvr':0,'monitoring_status':1,'logo':'\/interface\/misc\/logos\/320\/127.jpg','url':'https://www.w3schools.com/html/mov_bbb.mp4'},
+            {'id':128,'name':'FTV','number':1,'censored':0,'genre_id':'svi-kanali','favorite':0,'archive':1,'archive_range':120,'pvr':0,'monitoring_status':1,'logo':'\/interface\/misc\/logos\/320\/127.jpg','url':'https://youtu.be/LJ5T-n4800s&html5=True'},
             {'id':129,'name':'Hayat BIH','number':1,'censored':0,'genre_id':'svi-kanali','favorite':0,'archive':1,'archive_range':120,'pvr':0,'monitoring_status':1,'logo':'\/interface\/misc\/logos\/320\/127.jpg','url':''},
             {'id':130,'name':'Hayat Plus HD','number':1,'censored':0,'genre_id':'svi-kanali','favorite':0,'archive':1,'archive_range':120,'pvr':0,'monitoring_status':1,'logo':'\/interface\/misc\/logos\/320\/127.jpg','url':''},
             {'id':131,'name':'Hayatovci','number':1,'censored':0,'genre_id':'svi-kanali','favorite':0,'archive':1,'archive_range':120,'pvr':0,'monitoring_status':1,'logo':'\/interface\/misc\/logos\/320\/127.jpg','url':''},
@@ -52,10 +52,9 @@
             {'id':134,'name':'Channel 8','number':1,'censored':0,'genre_id':'svi-kanali','favorite':0,'archive':1,'archive_range':120,'pvr':0,'monitoring_status':1,'logo':'\/interface\/misc\/logos\/320\/127.jpg','url':''},
             {'id':135,'name':'Channel 9','number':1,'censored':0,'genre_id':'svi-kanali','favorite':0,'archive':1,'archive_range':120,'pvr':0,'monitoring_status':1,'logo':'\/interface\/misc\/logos\/320\/127.jpg','url':''},
             {'id':136,'name':'Channel 10','number':1,'censored':0,'genre_id':'svi-kanali','favorite':0,'archive':1,'archive_range':120,'pvr':0,'monitoring_status':1,'logo':'\/interface\/misc\/logos\/320\/127.jpg','url':''}];
-          
+
             return channels;
-        
+
     }
-  
+
   }());
-  

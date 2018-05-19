@@ -1,10 +1,58 @@
 <section>
-      <script src="/modules/core/client/css/core.css"></script>
+  <div class="channel-page">
+    <script src="/modules/core/client/css/core.css"></script>
+    <!--left menu section-->
     <meta name="viewpoint" content="width=device-width,initial-scale=1">
-        <div class="vertical-menu">
-                <a ng-repeat="radio in vm.radioList" class="list-group-item">
-                  <h4 class="list-group-item-heading" ng-bind="radio.name"></h4>
-                </a>
-              </div>
-                <section style="width: 300px; height:200px;background-color:grey;"></section>   
+    <div style="width:300px; height:100%; float:left;">
+      <div class="vertical-menu" style="height:650px;">
+        <div ng-repeat="radio in vm.channelList" class="list-group-item">
+          <img style="width:50px; height:50px;float:left;padding-top: 8px;"
+               src="/modules/core/client/img/brand/bht_icon.jpg">
+          <span ng-click="vm.changeCurrentRadioChannel(radio)" class="glyphicon glyphicon-play-circle"
+                style="float: right; padding-top: 18px;font-size: 22px;"></span>
+          <h4 class="list-group-item-heading" style="text-align:left;padding-left:70px;height:55px;padding-top: 20px;"
+              ng-bind="radio.name"></h4>
+        </div>
+      </div>
+      <div style="width: 300px; height:140px; background-color:black;">
+        <img style="width:100px; height:100px;padding-top: 50px;float: left;padding-left: 20px;"
+             src="/modules/core/client/img/brand/bht_icon.jpg">
+        <h4 style="color: white; padding-left: 120px; padding-top: 68px;" ng-bind="vm.currentChannel.name"></h4>
+      </div>
+    </div>
+  <!--player section-->
+  <div style=" height:650px;">
+
+    <video id="video" height="100%" width="1450px" controls>
+    </video>
+
+  </div>
+  <!--footer section-->
+  <div style=" height:150px; margin-left:300px;background-color:black;">
+    <div style="width:40%; height:150px; float:left;padding-top: 20px;color: white;">
+      <h4>{{vm.tempPlayingContent}}</h4>
+      <div>
+        <h5 style="float:left; background-color:#2e6da4;padding:3px;">ON NOW </h5>
+        <h5 style="float:left; padding-left:15px;padding:3px;"> {{vm.tempPlayingTime}}</h5>
+      </div>
+    </div>
+    <div style="width:20%; height:150px; float:left;">
+      <div class="player">
+        <figure class="left_icon">
+          <div class="btns">
+            <a class="back icon-backward" href="#"></a>
+            <a ng-click="vm.playRadioChannel()" class="play icon-play" href="#"></a>
+            <a class="forward icon-forward" href="#"></a>
+          </div>
+      </div>
+    </div>
+    <div style="width:40%; height:150px; float:left;padding-top: 20px;color: white;">
+      <h4><span>NEXT: </span>{{vm.nextPlayingContent}}</h4>
+      <div>
+        <h5 style="float:left; background-color:red;padding:3px;">NEXT: </h5>
+        <h5 style="float:left; padding-left:15px;padding:3px;">{{vm.nextPlayingTime}}</h5>
+      </div>
+    </div>
+  </div>
+  </div>
 </section>
