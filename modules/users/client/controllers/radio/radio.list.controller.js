@@ -16,10 +16,10 @@
     vm.changeCurrentChannel = changeCurrentChannel;
     vm.playChannel = playChannel;
 
-    vm.tempPlayingContent = 'Liga prvaka Real Madrid';
-    vm.nextPlayingContent = 'Alihemija bosanskog drustva';
-    vm.tempPlayingTime = '15:00 - 16:00';
-    vm.nextPlayingTime = '16:00 - 17:00';
+    // vm.tempPlayingContent = 'Liga prvaka Real Madrid';
+    // vm.nextPlayingContent = 'Alihemija bosanskog drustva';
+    // vm.tempPlayingTime = '15:00 - 16:00';
+    // vm.nextPlayingTime = '16:00 - 17:00';
 
     function getRadio() {
       return RadioService.loadRadio();
