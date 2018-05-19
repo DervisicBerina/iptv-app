@@ -13,8 +13,8 @@
       vm.channelList = getRadio();
       vm.user = Authentication.user;
       vm.currentChannel = vm.channelList[0];
-      vm.changeCurrentRadioChannel = changeCurrentRadioChannel;
-      vm.playRadioChannel = playRadioChannel;
+      vm.changeCurrentChannel = changeCurrentChannel;
+      vm.playChannel = playChannel;
 
       vm.tempPlayingContent = "Liga prvaka Real Madrid";
       vm.nextPlayingContent = "Alihemija bosanskog drustva";
@@ -27,7 +27,7 @@
 
       function changeCurrentRadioChannel(radio) {
         vm.currentChannel = radio;
-        vm.playRadioChannel(radio.url);
+        vm.playChannel(radio.url);
       }
       function playRadioChannel(channelUrl) {
         console.log("playing.. " + vm.currentChannel.url);
