@@ -174,6 +174,9 @@
         subMenuItem2 = {
           title: 'sub2'
         },
+        subMenuItem3 = {
+          title: 'sub3'
+        },
         menuItemOptions = {
           title: 'title',
           state: 'state',
@@ -182,7 +185,7 @@
           isPublic: false,
           roles: ['a', 'b'],
           position: 2,
-          items: [subMenuItem1, subMenuItem2]
+          items: [subMenuItem1, subMenuItem2, subMenuItem3]
         },
         menu,
         menuItem;
@@ -237,6 +240,7 @@
         it('should call addSubMenuItem for each item in options', function () {
           expect(menuService.addSubMenuItem).toHaveBeenCalledWith(menuId, menuItemOptions.state, subMenuItem1);
           expect(menuService.addSubMenuItem).toHaveBeenCalledWith(menuId, menuItemOptions.state, subMenuItem2);
+          expect(menuService.addSubMenuItem).toHaveBeenCalledWith(menuId, menuItemOptions.state, subMenuItem3);
         });
       });
 

@@ -20,7 +20,7 @@
       RadioService.loadRadio().then(function (data) {
         // vm.radioList = data;
         // vm.currentRadio = data[0];
-        // vm.radioList.concat(data);
+        // vm.radioList.concat(data);mongo
         // console.log(vm.radioList);
       });
     }

@@ -17,8 +17,13 @@
 
     // Add the dropdown list item
     menuService.addSubMenuItem('topbar', 'articles', {
-      title: 'List Articles',
-      state: 'articles.list',
+      title: 'TV Channels',
+      state: 'channels.list',
+      roles: ['*']
+    });
+    menuService.addSubMenuItem('topbar', 'articles', {
+      title: 'Radio',
+      state: 'radio.list',
       roles: ['*']
     });
   }
