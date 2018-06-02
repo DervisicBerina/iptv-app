@@ -6,14 +6,14 @@
     .module('users.services')
     .factory('RadioService', RadioService);
 
-  RadioService.$inject = ['$resource'];
+  RadioService.$inject = ['$resource', '$http'];
 
-  function RadioService($resource) {
+  function RadioService($resource, $http) {
     var Radio = $resource('/api/radio', {}, {
       update: {
         method: 'PUT'
       },
-      radio: getRadio(),
+      radio: getRadio($http),
       deleteProvider: {
         method: 'DELETE',
         url: '/api/users/accounts',
@@ -25,158 +25,29 @@
 
     angular.extend(Radio, {
       loadRadio: function () {
-        return getRadio();
+        return getRadio($http);
       }
     });
 
     return Radio;
   }
 
-  function getRadio() {
-    var radio = [
-      {
-        'id': 127,
-        'name': 'BHT1 HD',
-        'number': 1,
-        'censored': 0,
-        'genre_id': 'svi-kanali',
-        'favorite': 0,
-        'archive': 1,
-        'archive_range': 120,
-        'pvr': 0,
-        'monitoring_status': 1,
-        'logo': '\/interface\/misc\/logos\/320\/127.jpg',
-        'url': 'https://www.w3schools.com/html/mov_bbb.mp4'
-      },
-      {
-        'id': 128,
-        'name': 'Channel 2',
-        'number': 1,
-        'censored': 0,
-        'genre_id': 'svi-kanali',
-        'favorite': 0,
-        'archive': 1,
-        'archive_range': 120,
-        'pvr': 0,
-        'monitoring_status': 1,
-        'logo': '\/interface\/misc\/logos\/320\/127.jpg',
-        'url': ''
-      },
-      {
-        'id': 129,
-        'name': 'Channel 3',
-        'number': 1,
-        'censored': 0,
-        'genre_id': 'svi-kanali',
-        'favorite': 0,
-        'archive': 1,
-        'archive_range': 120,
-        'pvr': 0,
-        'monitoring_status': 1,
-        'logo': '\/interface\/misc\/logos\/320\/127.jpg',
-        'url': ''
-      },
-      {
-        'id': 130,
-        'name': 'Channel 4',
-        'number': 1,
-        'censored': 0,
-        'genre_id': 'svi-kanali',
-        'favorite': 0,
-        'archive': 1,
-        'archive_range': 120,
-        'pvr': 0,
-        'monitoring_status': 1,
-        'logo': '\/interface\/misc\/logos\/320\/127.jpg',
-        'url': ''
-      },
-      {
-        'id': 131,
-        'name': 'Channel 5',
-        'number': 1,
-        'censored': 0,
-        'genre_id': 'svi-kanali',
-        'favorite': 0,
-        'archive': 1,
-        'archive_range': 120,
-        'pvr': 0,
-        'monitoring_status': 1,
-        'logo': '\/interface\/misc\/logos\/320\/127.jpg',
-        'url': ''
-      },
-      {
-        'id': 132,
-        'name': 'Channel 6',
-        'number': 1,
-        'censored': 0,
-        'genre_id': 'svi-kanali',
-        'favorite': 0,
-        'archive': 1,
-        'archive_range': 120,
-        'pvr': 0,
-        'monitoring_status': 1,
-        'logo': '\/interface\/misc\/logos\/320\/127.jpg',
-        'url': ''
-      },
-      {
-        'id': 133,
-        'name': 'Channel 7',
-        'number': 1,
-        'censored': 0,
-        'genre_id': 'svi-kanali',
-        'favorite': 0,
-        'archive': 1,
-        'archive_range': 120,
-        'pvr': 0,
-        'monitoring_status': 1,
-        'logo': '\/interface\/misc\/logos\/320\/127.jpg',
-        'url': ''
-      },
-      {
-        'id': 134,
-        'name': 'Channel 8',
-        'number': 1,
-        'censored': 0,
-        'genre_id': 'svi-kanali',
-        'favorite': 0,
-        'archive': 1,
-        'archive_range': 120,
-        'pvr': 0,
-        'monitoring_status': 1,
-        'logo': '\/interface\/misc\/logos\/320\/127.jpg',
-        'url': ''
-      },
-      {
-        'id': 135,
-        'name': 'Channel 9',
-        'number': 1,
-        'censored': 0,
-        'genre_id': 'svi-kanali',
-        'favorite': 0,
-        'archive': 1,
-        'archive_range': 120,
-        'pvr': 0,
-        'monitoring_status': 1,
-        'logo': '\/interface\/misc\/logos\/320\/127.jpg',
-        'url': ''
-      },
-      {
-        'id': 136,
-        'name': 'Channel 10',
-        'number': 1,
-        'censored': 0,
-        'genre_id': 'svi-kanali',
-        'favorite': 0,
-        'archive': 1,
-        'archive_range': 120,
-        'pvr': 0,
-        'monitoring_status': 1,
-        'logo': '\/interface\/misc\/logos\/320\/127.jpg',
-        'url': ''
-      }];
-
-    return radio;
-
+  function getRadio($http) {
+    return new Promise(function (responseData) {
+      var radios = [];
+      var userData = JSON.parse(sessionStorage.getItem('currentUser'));
+      var req = {
+        method: 'GET',
+        url: 'http://stb.bhmedia.tv:88/interface/api/v2/users/926/radio-channels/',
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ' + userData.access_token
+        }
+      };
+      $http(req).then(function (response) {
+        radios = response.data.results;
+        responseData(radios);
+      });
+    });
   }
-
 }());

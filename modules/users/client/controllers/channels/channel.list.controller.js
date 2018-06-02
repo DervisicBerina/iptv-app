@@ -10,12 +10,13 @@
   function ChannelListController($scope, ChannelsService, Authentication) {
 
     var vm = this;
-    vm.channelList = getChannels();
+    getChannels();
+    vm.channelsList = [];
     vm.user = Authentication.user;
-    vm.currentChannel = vm.channelList[0];
+    vm.currentChannel = vm.channelsList[0];
     vm.changeCurrentChannel = changeCurrentChannel;
     vm.playChannel = playChannel;
-
+    vm.channelUrl = '';
     vm.tempPlayingContent = 'Liga prvaka Real Madrid';
     vm.nextPlayingContent = 'Alihemija bosanskog drustva';
     vm.tempPlayingTime = '15:00 - 16:00';
@@ -23,15 +24,27 @@
 
     function changeCurrentChannel(channel) {
       vm.currentChannel = channel;
-      vm.playChannel(channel.url);
+      getChannelUrl(channel.id);
     }
 
     function getChannels() {
-      return ChannelsService.loadChannels();
+      ChannelsService.loadChannels().then(function (data) {
+        vm.channelsList = data;
+        changeCurrentChannel(vm.channelsList[0]);
+        getChannelUrl(vm.currentChannel.id);
+      });
+    }
+
+    function getChannelUrl(channelId) {
+      ChannelsService.getChannelUrl(channelId).then(function (channelUrl) {
+        vm.channelUrl = channelUrl;
+        playChannel(vm.channelUrl);
+      });
+
     }
 
     function playChannel(channelUrl) {
-      console.log('playing.. ' + vm.currentChannel.url);
+      console.log('playing.. ' + channelUrl);
 
       var video = document.getElementById('video');
       var source = document.createElement('source');

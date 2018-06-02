@@ -10,28 +10,28 @@
   function RadioListController($scope, RadioService, Authentication) {
 
     var vm = this;
-    vm.channelList = getRadio();
+    vm.getRadio = getRadio();
+    vm.radioList = [];
     vm.user = Authentication.user;
-    vm.currentChannel = vm.channelList[0];
+    vm.currentRadio;
     vm.changeCurrentChannel = changeCurrentChannel;
     vm.playChannel = playChannel;
-
-    // vm.tempPlayingContent = 'Liga prvaka Real Madrid';
-    // vm.nextPlayingContent = 'Alihemija bosanskog drustva';
-    // vm.tempPlayingTime = '15:00 - 16:00';
-    // vm.nextPlayingTime = '16:00 - 17:00';
-
     function getRadio() {
-      return RadioService.loadRadio();
+      RadioService.loadRadio().then(function (data) {
+        // vm.radioList = data;
+        // vm.currentRadio = data[0];
+        // vm.radioList.concat(data);
+        // console.log(vm.radioList);
+      });
     }
 
     function changeCurrentChannel(radio) {
-      vm.currentChannel = radio;
+      vm.currentRadio = radio;
       vm.playChannel(radio.url);
     }
 
     function playChannel(channelUrl) {
-      console.log('playing.. ' + vm.currentChannel.url);
+      console.log('playing.. ' + vm.currentRadio.url);
 
       var video = document.getElementById('video');
       var source = document.createElement('source');
