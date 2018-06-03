@@ -7,6 +7,7 @@
 
   ChannelListController.$inject = ['$scope', 'ChannelsService', 'Authentication'];
 
+
   function ChannelListController($scope, ChannelsService, Authentication) {
 
     var vm = this;
@@ -44,16 +45,9 @@
     }
 
     function playChannel(channelUrl) {
-      console.log('playing.. ' + channelUrl);
-
-      var video = document.getElementById('video');
-      var source = document.createElement('source');
-
-      source.setAttribute('src', channelUrl);
-
-      video.appendChild(source);
-      video.play();
-
+      window.jwplayer('player').setup({
+        file: channelUrl
+      });
     }
   }
 

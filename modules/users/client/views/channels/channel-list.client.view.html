@@ -3,8 +3,8 @@
     <script src="/modules/core/client/css/core.css"></script>
     <!--left menu section-->
     <meta name="viewpoint" content="width=device-width,initial-scale=1">
-    <div style="width:300px; height:100%; float:left;">
-      <div class="vertical-menu" style="height:650px;">
+    <div style="width:25%; float:left;height: calc(100% - 1px);position: absolute;">
+      <div class="vertical-menu">
         <div ng-repeat="channel in vm.channelsList" class="list-group-item">
           <img style="width:50px; height:50px;float:left;padding-top: 8px;"
                src="http://stb.bhmedia.tv:88{{channel.logo}}">
@@ -14,29 +14,27 @@
               ng-bind="channel.name"></h4>
         </div>
       </div>
-      <div style="width: 300px; height:140px; background-color:black; ">
-        <img style="width:100px; height:100px;padding-top: 50px;float: left;padding-left: 20px;"
-             src="http://stb.bhmedia.tv:88{{vm.currentChannel.logo}}">
-        <h4 style="color: white; padding-left: 120px; padding-top: 68px;" ng-bind="vm.currentChannel.name"></h4>
-      </div>
     </div>
+
     <!--player section-->
-    <div style=" height:650px;">
+    <div id='player' style="width: 75% !important; float: right;position: absolute;"></div>
+    <br/>
 
-      <video id="video" height="100%" width="1450px" controls>
-      </video>
-
-    </div>
     <!--footer section-->
-    <div style=" height:150px; margin-left:300px;background-color:black;">
-      <div style="width:40%; height:150px; float:left;padding-top: 20px;color: white;">
+    <div style=" height:150px; background-color:black;width: 100%;float: left;">
+      <div style="width: 25%;  background-color:black; float: left;">
+        <img style="width:100px; height:100px;padding-left: 20px;float: left;margin-top: 25px;"
+             src="http://stb.bhmedia.tv:88{{vm.currentChannel.logo}}">
+        <h4 style="color: white; padding-left: 120px;margin-top: 69px;" ng-bind="vm.currentChannel.name"></h4>
+      </div>
+      <div style="width:30%;  float:left;padding-top: 20px;color: white;background-color:black;">
         <h4>{{vm.tempPlayingContent}}</h4>
         <div>
           <h5 style="float:left; background-color:#2e6da4;padding:3px;">ON NOW </h5>
           <h5 style="float:left; padding-left:15px;padding:3px;"> {{vm.tempPlayingTime}}</h5>
         </div>
       </div>
-      <div style="width:20%; height:150px; float:left;">
+      <div style="width:15%;  float:left;background-color:black;">
         <div class="player">
           <figure class="left_icon">
             <div class="btns">
@@ -46,7 +44,7 @@
             </div>
         </div>
       </div>
-      <div style="width:40%; height:150px; float:left;padding-top: 20px;color: white;">
+      <div style="width:30%; height:150px; float:left;padding-top: 20px;color: white;background-color:black;">
         <h4><span>NEXT: </span>{{vm.nextPlayingContent}}</h4>
         <div>
           <h5 style="float:left; background-color:red;padding:3px;">NEXT: </h5>
