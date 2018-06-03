@@ -1,6 +1,5 @@
 (function () {
   'use strict';
-
   // Users service used for communicating with the users REST endpoint
   angular
     .module('users.services')
@@ -14,14 +13,7 @@
         method: 'PUT'
       },
       channels: getChannels($http),
-      channelUrl: getChannelUrl($http),
-      deleteProvider: {
-        method: 'DELETE',
-        url: '/api/users/accounts',
-        params: {
-          provider: '@provider'
-        }
-      }
+      channelUrl: getChannelUrl($http)
     });
 
 

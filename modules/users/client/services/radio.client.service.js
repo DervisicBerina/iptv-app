@@ -13,14 +13,8 @@
       update: {
         method: 'PUT'
       },
-      radio: getRadio($http),
-      deleteProvider: {
-        method: 'DELETE',
-        url: '/api/users/accounts',
-        params: {
-          provider: '@provider'
-        }
-      }
+      radio: getRadio($http)
+
     });
 
     angular.extend(Radio, {

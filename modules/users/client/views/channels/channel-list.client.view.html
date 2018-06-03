@@ -5,14 +5,16 @@
     <meta name="viewpoint" content="width=device-width,initial-scale=1">
     <div style="width:25%; float:left;height: calc(100% - 1px);position: absolute;">
       <div class="vertical-menu">
-        <div ng-repeat="channel in vm.channelsList" class="list-group-item">
-          <img style="width:50px; height:50px;float:left;padding-top: 8px;"
-               src="http://stb.bhmedia.tv:88{{channel.logo}}">
-          <span ng-click="vm.changeCurrentChannel(channel)" class="glyphicon glyphicon-play-circle"
-                style="float: right; padding-top: 18px;font-size: 22px;"></span>
-          <h4 class="list-group-item-heading" style="text-align:left;padding-left:70px;height:55px;padding-top: 20px;"
-              ng-bind="channel.name"></h4>
-        </div>
+        <ul class="channels">
+          <li ng-repeat="channel in vm.channelsList">
+            <img style="width:50px; height:50px;float:left;padding-top: 8px;"
+                 src="http://stb.bhmedia.tv:88{{channel.logo}}">
+            <span ng-click="vm.changeCurrentChannel(channel)" class="glyphicon glyphicon-play-circle"
+                  style="float: right; color: #ffffff; padding-right: 20px; padding-top: 18px;font-size: 22px;"></span>
+            <h4 style="color: #ffffff; text-align:left;padding-left:70px;height:55px;padding-top: 20px;"
+                ng-bind="channel.name"></h4>
+          </li>
+        </ul>
       </div>
     </div>
 
@@ -42,6 +44,7 @@
               <a ng-click="vm.playChannel()" class="play icon-play" href="#"></a>
               <a class="forward icon-forward" href="#"></a>
             </div>
+          </figure>
         </div>
       </div>
       <div style="width:30%; height:150px; float:left;padding-top: 20px;color: white;background-color:black;">
