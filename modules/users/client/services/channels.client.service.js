@@ -30,14 +30,13 @@
   }
 
   function loginToMiddleware() {
-
-    const LOGIN_URL = 'http://stb.bhmedia.tv:88/interface/auth/token.php';
+    var LOGIN_URL = 'http://stb.bhmedia.tv:88/interface/auth/token.php';
     var username = 'alen';
     var password = 'Fahro1990';
     return new Promise(function (response) {
 
-      const xhr = new XMLHttpRequest();
-      const formData = 'grant_type=password&username=' + username + '&password=' + password + '&client_type=pc';
+      var xhr = new XMLHttpRequest();
+      var formData = 'grant_type=password&username=' + username + '&password=' + password + '&client_type=pc';
       xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
           if (xhr.status === 200) {
