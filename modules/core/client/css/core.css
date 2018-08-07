@@ -72,7 +72,7 @@ a:hover .header-profile-image {
 
 .vertical-menu {
 	width:100%;
-	height: calc(100% - 182px);
+	height: calc(100% - 109px);
 	overflow-y: auto;
 	text-align: center;
 	border-right: 1px solid rgba(255, 255, 255, 0.1);
@@ -390,9 +390,9 @@ ul {
 }
 
 .btns {
-	width: 350px;
+	width: 200px;
 	text-align:left;
-	margin-top: 50px;
+	margin-top: 27px;
 }
 
 .btns a {
@@ -475,3 +475,100 @@ ul {
 	content: "\2d";
 }
 /*media bar css end*/
+
+
+/* channels section */
+.channel-logo {
+	width:50px;
+	height:50px;
+	float:left;
+	padding-top: 8px;
+}
+
+#channels-menu {
+	width:25%;
+	float:left;
+	height: calc(100% - 50px);
+	position: absolute;
+	z-index: 100
+}
+
+.play-channel {
+	float: right;
+	color: #ffffff;
+	padding-right: 20px;
+	padding-top: 18px;
+	font-size: 22px;
+}
+
+
+/* player section */
+.iptv-player {
+	width: 100% !important;
+	float: right;
+	position: relative;
+}
+
+.jw-error {
+	background-color: transparent !important;
+}
+
+/*footer section */
+.channels-footer {
+	height:110px;
+	background-color:black;
+	width: 100%;
+	position: absolute;
+	bottom: 0px;
+}
+
+.channel-content {
+	color: white;
+}
+
+.footer-channel-logo {
+	width: 25%;
+	background-color:black;
+	float: left;
+}
+
+.footer-channel-logo-img {
+	width:80px;
+	height:80px;
+	padding-left: 20px;
+	float: left;
+	margin-top: 12px;
+}
+.footer-channel-logo-name {
+	color: white;
+	padding-left: 100px;
+	margin-top: 49px;
+}
+
+@media screen and (max-width: 600px) {
+	#temp-channel-logo {
+		visibility: hidden;
+		clear: both;
+		float: left;
+		display: none;
+	}
+	#temp-channel-temp-content {
+		visibility: hidden;
+		clear: both;
+		float: left;
+		display: none;
+	}
+	#temp-channel-next-content {
+		visibility: hidden;
+		clear: both;
+		float: left;
+		display: none;
+	}
+	.btns {
+		text-align: center;
+		margin-left: 23%;
+	}
+	#channels-menu {
+		width: 100%;
+	}
+}

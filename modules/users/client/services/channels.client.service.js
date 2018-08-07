@@ -32,8 +32,8 @@
   function loginToMiddleware() {
 
     const LOGIN_URL = 'http://stb.bhmedia.tv:88/interface/auth/token.php';
-    var username = '';
-    var password = '';
+    var username = 'alen';
+    var password = 'Fahro1990';
     return new Promise(function (response) {
 
       const xhr = new XMLHttpRequest();
