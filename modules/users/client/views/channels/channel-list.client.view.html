@@ -32,10 +32,10 @@
 
         <!-- temp playing content section -->
         <div id="temp-channel-temp-content" class="col-xs-12 col-sm-4 col-md-4">
-          <h4 class="channel-content">{{vm.tempPlayingContent}}</h4>
+          <h4 class="channel-content" ng-bind="vm.tempPlayingContent"></h4>
           <div>
             <h5 style="float:left; background-color:#2e6da4;padding:3px;">ON NOW </h5>
-            <h5 style="float:left; padding-left:15px; padding-top: 3px; color: white;"> {{vm.tempPlayingTime}}</h5>
+            <h5 style="float:left; padding-left:15px; padding-top: 3px; color: white;" ng-bind="vm.tempPlayingTime"></h5>
           </div>
         </div>
 
