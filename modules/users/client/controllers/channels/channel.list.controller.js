@@ -11,6 +11,8 @@
   function ChannelListController($scope, ChannelsService, ChannelEpgService, Authentication) {
 
     var vm = this;
+    vm.playerActive = true;
+    vm.volumeOf = false;
     vm.channelUrl = '';
     vm.tempPlayingContent = '';
     vm.nextPlayingContent = '';
@@ -21,6 +23,10 @@
     vm.currentChannel = vm.channelsList[0];
     vm.changeCurrentChannel = changeCurrentChannel;
     vm.playChannel = playChannel;
+    vm.stopPlayer = stopPlayer;
+    vm.turnOnVolume = turnOnVolume;
+    vm.turnOfVolume = turnOfVolume;
+    vm.setFullScreen = setFullScreen;
     getChannels();
 
     function changeCurrentChannel(channel) {
@@ -71,6 +77,26 @@
       var hours = date.getHours();
       var minutes = date.getMinutes();
       return (('0' + hours).slice(-2)) + ':' + (('0' + minutes).slice(-2));
+    }
+
+    function stopPlayer() {
+      vm.playerActive = false;
+      window.jwplayer('player').stop();
+    }
+
+    function turnOfVolume() {
+      vm.volumeOf = true;
+      window.jwplayer('player').setMute(true);
+    }
+
+    function turnOnVolume() {
+      window.jwplayer('player').setMute(false);
+      vm.volumeOf = false;
+      window.jwplayer('player').setVolume(100);
+    }
+
+    function setFullScreen() {
+      window.jwplayer('player').setFullscreen(true);
     }
 
     function playChannel(channelUrl) {

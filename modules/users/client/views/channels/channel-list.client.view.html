@@ -45,7 +45,7 @@
             <figure class="left_icon">
               <div class="btns">
                 <a class="back icon-backward" href="#"></a>
-                <a ng-click="vm.playChannel()" class="play icon-play" href="#"></a>
+                <a ng-click="vm.stopPlayer()" class="play icon-play" href="#"></a>
                 <a class="forward icon-forward" href="#"></a>
               </div>
             </figure>
@@ -53,13 +53,20 @@
         </div>
 
         <!-- next playing content section -->
-        <div id="temp-channel-next-content" class="col-xs-12 col-sm-4 col-md-4">
+        <div id="temp-channel-next-content" class="col-xs-12 col-sm-3 col-md-3">
           <h4 class="channel-content"><span>NEXT: </span>{{vm.nextPlayingContent}}</h4>
           <div>
             <h5 style="float:left; background-color:red;padding:3px;">NEXT: </h5>
             <h5 style="float:left; padding-left:15px; padding-top: 3px; color:white;">{{vm.nextPlayingTime}}</h5>
           </div>
         </div>
+
+        <div class="col-xs-12 col-sm-1 col-md-1 segment-right" style="margin-top:37px; text-align: center;">
+          <i ng-click="vm.turnOnVolume()" ng-if="vm.volumeOf" class="glyphicon glyphicon-volume-off" style="color: white;margin-top: 10px;"></i>
+          <i ng-click="vm.turnOfVolume()" ng-if="!vm.volumeOf" class="glyphicon glyphicon-volume-up" style="color: white;margin-top: 10px;"></i>
+          <i ng-click="vm.setFullScreen()" style="margin-left: 10px;margin-top: 10px;color: white;" class="glyphicon glyphicon-fullscreen"></i>
+        </div>
+
       </div>
     </section>
   </div>
