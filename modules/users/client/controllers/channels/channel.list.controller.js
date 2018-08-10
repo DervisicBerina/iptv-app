@@ -5,10 +5,10 @@
     .module('users')
     .controller('ChannelListController', ChannelListController);
 
-  ChannelListController.$inject = ['$scope', 'ChannelsService', 'ChannelEpgService', 'Authentication'];
+  ChannelListController.$inject = ['$scope', 'ChannelsService', 'ChannelEpgService', 'FavoritesService', 'Authentication'];
 
 
-  function ChannelListController($scope, ChannelsService, ChannelEpgService, Authentication) {
+  function ChannelListController($scope, ChannelsService, ChannelEpgService, FavoritesService, Authentication) {
 
     var vm = this;
     vm.playerActive = true;
@@ -19,15 +19,19 @@
     vm.tempPlayingTime = '';
     vm.nextPlayingTime = '';
     vm.channelsList = [];
+    vm.favoriteChannelList = [];
     vm.user = Authentication.user;
     vm.currentChannel = vm.channelsList[0];
     vm.changeCurrentChannel = changeCurrentChannel;
+    vm.checkIfInFavorites = checkIfInFavorites;
+    vm.addToFavorites = addToFavorites;
     vm.playChannel = playChannel;
     vm.stopPlayer = stopPlayer;
     vm.turnOnVolume = turnOnVolume;
     vm.turnOfVolume = turnOfVolume;
     vm.setFullScreen = setFullScreen;
     getChannels();
+    getUserFavoriteChannels();
 
     function changeCurrentChannel(channel) {
       vm.currentChannel = channel;
@@ -40,6 +44,41 @@
         vm.channelsList = data;
         changeCurrentChannel(vm.channelsList[0]);
         getChannelUrl(vm.currentChannel.id);
+      });
+    }
+
+    function getUserFavoriteChannels() {
+      FavoritesService.retrieveUserFavoriteChannels().then(function (data) {
+        vm.favoriteChannelList = [];
+        vm.favoriteChannelList = data;
+      });
+    }
+
+    function checkIfInFavorites(channelId) {
+      return vm.favoriteChannelList.includes(channelId);
+    }
+
+    function addToFavorites(channelId) {
+      if (vm.favoriteChannelList.includes(channelId)) {
+        console.log('Delete...');
+        deleteChannelFromFavorites(channelId);
+      } else {
+        FavoritesService.addFavoriteChannel(channelId).then(function () {
+          console.log('Adding...');
+          vm.favoriteChannelList.push(channelId);
+         // getUserFavoriteChannels();
+        });
+      }
+      getUserFavoriteChannels();
+    }
+
+    function deleteChannelFromFavorites(channelId) {
+      FavoritesService.deleteFavoriteChannel(channelId).then(function () {
+        for (var cnt = 0; cnt < vm.favoriteChannelList.length; cnt++) {
+          if (channelId === vm.favoriteChannelList[cnt]) {
+            vm.favoriteChannelList.splice(cnt, 1);
+          }
+        }
       });
     }
 
