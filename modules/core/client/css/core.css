@@ -519,7 +519,7 @@ ul {
 	width: 100%;
 	position: absolute;
 	bottom: 0px;
-	background-image: -webkit-linear-gradient(top, #3c3c3c 0%, #222 100%); */
+	background-image: -webkit-linear-gradient(top, #3c3c3c 0%, #222 100%);
     background-image: -o-linear-gradient(top, #3c3c3c 0%, #222 100%);
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#3c3c3c), to(#222));
 	background-image: linear-gradient(to bottom, #3c3c3c 0%, #222 100%);
@@ -581,5 +581,6 @@ ul {
 
 
 ul, menu, dir {
+	-moz-padding-start: 22px !important;
 	-webkit-padding-start: 22px !important;
 }
