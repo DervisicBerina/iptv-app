@@ -14,12 +14,6 @@
             <span ng-click="vm.addToFavorites(channel.id)" ng-class="vm.checkIfInFavorites(channel.id) ? 'glyphicon glyphicon-star' : 'glyphicon glyphicon-star-empty'"
                   style="float: right; color: yellow; padding-right: 20px; padding-top: 18px;font-size: 22px;"></span>
 
-            <!--<span ng-click="vm.addToFavorites(channel.id)" ng-show="vm.checkIfInFavorites(channel.id)"  class="glyphicon glyphicon-star active"
-                  style="float: right; color: yellow; padding-right: 20px; padding-top: 18px;font-size: 22px;"></span>
-
-            <span ng-click="vm.addToFavorites(channel.id)" ng-show="!vm.checkIfInFavorites(channel.id)"  class="glyphicon glyphicon-star-empty"
-                  style="float: right; color: yellow; padding-right: 20px; padding-top: 18px;font-size: 22px;"></span>-->
-
             <h4 style="color: #ffffff; text-align:left;padding-left:70px;height:55px;padding-top: 20px;"
                 ng-bind="channel.name"></h4>
           </li>

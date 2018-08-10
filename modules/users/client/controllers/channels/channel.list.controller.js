@@ -60,13 +60,10 @@
 
     function addToFavorites(channelId) {
       if (vm.favoriteChannelList.includes(channelId)) {
-        console.log('Delete...');
         deleteChannelFromFavorites(channelId);
       } else {
         FavoritesService.addFavoriteChannel(channelId).then(function () {
-          console.log('Adding...');
           vm.favoriteChannelList.push(channelId);
-         // getUserFavoriteChannels();
         });
       }
       getUserFavoriteChannels();
