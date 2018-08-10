@@ -45,11 +45,7 @@
               sessionStorage.setItem('currentUser', JSON.stringify(loginResponse));
               response(true);
             }
-            {
-              response(false);
-            }
           } else {
-            //reject(xhr.response);
             response(false);
           }
         }

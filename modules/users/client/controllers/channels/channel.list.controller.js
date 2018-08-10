@@ -5,10 +5,10 @@
     .module('users')
     .controller('ChannelListController', ChannelListController);
 
-  ChannelListController.$inject = ['$scope', 'ChannelsService', 'ChannelEpgService', 'FavoritesService', 'Authentication'];
+  ChannelListController.$inject = ['$scope', 'ChannelsService', 'ChannelEpgService', 'FavoritesService', 'Authentication', 'PlayerService'];
 
 
-  function ChannelListController($scope, ChannelsService, ChannelEpgService, FavoritesService, Authentication) {
+  function ChannelListController($scope, ChannelsService, ChannelEpgService, FavoritesService, Authentication, PlayerService) {
 
     var vm = this;
     vm.playerActive = true;
@@ -117,30 +117,25 @@
 
     function stopPlayer() {
       vm.playerActive = false;
-      window.jwplayer('player').stop();
+      PlayerService.stopPlayer();
     }
 
     function turnOfVolume() {
       vm.volumeOf = true;
-      window.jwplayer('player').setMute(true);
+      PlayerService.volumeOf();
     }
 
     function turnOnVolume() {
-      window.jwplayer('player').setMute(false);
       vm.volumeOf = false;
-      window.jwplayer('player').setVolume(100);
+      PlayerService.volumeOn();
     }
 
     function setFullScreen() {
-      window.jwplayer('player').setFullscreen(true);
+      PlayerService.setFullScreen();
     }
 
     function playChannel(channelUrl) {
-      if (window.jwplayer('player') !== undefined) {
-        window.jwplayer('player').setup({
-          file: channelUrl
-        });
-      }
+      PlayerService.playChannel(channelUrl);
     }
   }
 }());
