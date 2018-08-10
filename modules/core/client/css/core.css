@@ -72,7 +72,7 @@ a:hover .header-profile-image {
 
 .vertical-menu {
 	width:100%;
-	height: calc(100% - 109px);
+	height: calc(100% - 110px);
 	overflow-y: auto;
 	text-align: center;
 	border-right: 1px solid rgba(255, 255, 255, 0.1);
@@ -516,10 +516,16 @@ ul {
 /*footer section */
 .channels-footer {
 	height:110px;
-	background-color:black;
 	width: 100%;
 	position: absolute;
 	bottom: 0px;
+	background-image: -webkit-linear-gradient(top, #3c3c3c 0%, #222 100%); */
+    background-image: -o-linear-gradient(top, #3c3c3c 0%, #222 100%);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#3c3c3c), to(#222));
+	background-image: linear-gradient(to bottom, #3c3c3c 0%, #222 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff3c3c3c', endColorstr='#ff222222', GradientType=0);
+	filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+	background-repeat: repeat-x;
 }
 
 .channel-content {
@@ -571,4 +577,9 @@ ul {
 	#channels-menu {
 		width: 100%;
 	}
+}
+
+
+ul, menu, dir {
+	-webkit-padding-start: 22px !important;
 }
