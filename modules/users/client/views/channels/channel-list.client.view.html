@@ -3,27 +3,31 @@
     <script src="/modules/core/client/css/core.css"></script>
     <!--left menu section-->
     <meta name="viewpoint" content="width=device-width,initial-scale=1">
-    <div id="channels-menu">
+    <div class="channels-menu">
       <div class="vertical-menu">
         <ul class="channels">
           <li ng-repeat="channel in vm.channelsList">
             <img class="channel-logo" src="http://stb.bhmedia.tv:88{{channel.logo}}">
-            <span ng-click="vm.changeCurrentChannel(channel)" class="glyphicon glyphicon-play-circle"
-                  style="float: right; color: #ffffff; padding-right: 20px; padding-top: 20px;font-size: 17px;"></span>
+            <div class="channel-content">
+              <span class="name" ng-bind="channel.name"></span>
+              <span class="desc">Standardni kanal</span>
+            </div>
+            <div class="listControl">
+              <div class="playAndList">
 
-            <span ng-click="vm.addToFavorites(channel.id)" ng-class="vm.checkIfInFavorites(channel.id) ? 'glyphicon glyphicon-star' : 'glyphicon glyphicon-star-empty'"
-                  style="float: right; color: yellow; padding-right: 20px; padding-top: 20px;font-size: 17px;"></span>
+              </div>
+            </div>
 
-            <h4 style="color: #ffffff; text-align:left;padding-left:70px;height:55px;padding-top: 20px;"
-                ng-bind="channel.name"></h4>
+            <i ng-click="vm.addToFavorites(channel.id)" ng-class="vm.checkIfInFavorites(channel.id) ? 'glyphicon glyphicon-star' : 'glyphicon glyphicon-star-empty'"
+                  style="float: right; color: yellow; padding-right: 20px; font-size: 17px;"></i>
+
+            <i ng-click="vm.changeCurrentChannel(channel)" class="glyphicon glyphicon-play-circle"></i>
+
           </li>
         </ul>
       </div>
     </div>
 
-    <!--player section-->
-    <div id='player' class="iptv-player"></div>
-    <br/>
 
     <!--footer section-->
     <section id="footer" class="channels-footer">
@@ -74,4 +78,7 @@
       </div>
     </section>
   </div>
+
+
 </section>
+

@@ -64,10 +64,7 @@ a:hover .header-profile-image {
 	width: 75% !important;
 	height: calc(100% - 150px);
 	float: right;
-}
-
-.jwplayer.jw-flag-aspect-mode {
-	float: right;
+	position: static;
 }
 
 .vertical-menu {
@@ -495,18 +492,87 @@ ul {
 
 /* channels section */
 .channel-logo {
-	width:50px;
-	height:50px;
+	width:55px;
+	height: 35px;
 	float:left;
-	padding-top: 8px;
 }
 
-#channels-menu {
-	width:25%;
+.channels-menu {
+	width: 350px;
 	float:left;
 	height: calc(100% - 50px);
 	position: absolute;
-	z-index: 100
+	z-index: 100;
+	border-right: 1px solid hsla(0,0%,100%,.1);
+	background: linear-gradient(180deg,rgba(0,0,0,.8) 0,rgba(0,0,0,.8) 25%,rgba(0,0,0,.67) 59%,rgba(0,0,0,.6) 65%,rgba(0,0,0,.37) 86%,rgba(0,0,0,.15)),linear-gradient(90deg,rgba(0,0,0,.7) 0,rgba(0,0,0,.7) 25%,rgba(0,0,0,.67) 59%,rgba(0,0,0,.6) 65%,rgba(0,0,0,.37) 86%,rgba(0,0,0,.15));
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#cc000000",endColorstr="#26000000",GradientType=0);
+	box-shadow: 5px 0 14px 0 rgba(0,0,0,.5);
+}
+
+.channels-menu ul {
+	list-style: none;
+	color: hsla(0,0%,100%,.8);
+	margin-top: 30px;
+	margin-left: -24px;
+	max-height: calc(100% - 1px);
+}
+
+.playAndList {
+	opacity: 0;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	transition: opacity .15s ease-in-out;
+}
+
+.channels-menu ul li {
+	cursor: default;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	padding: 5px 0;
+	padding-left: 10px;
+	padding-right: 10px;
+	border-bottom: 1px solid hsla(0,0%,100%,.1);
+}
+
+.channels-menu ul li div.channel-content {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	margin-left: 10px;
+}
+
+.listControl {
+	margin-left: auto;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	transition: opacity .1s ease-out;
+}
+
+.desc {
+	font-size: 12px;
+	text-align: left;
+	color: rgba(90, 206, 233, .7);
+}
+
+.name {
+	font-size: 16px;
+	text-align: left;
 }
 
 .play-channel {
@@ -532,16 +598,11 @@ ul {
 /*footer section */
 .channels-footer {
 	height:110px;
+	z-index: 9999;
 	width: 100%;
 	position: absolute;
 	bottom: 0px;
-	background-image: -webkit-linear-gradient(top, #3c3c3c 0%, #222 100%);
-    background-image: -o-linear-gradient(top, #3c3c3c 0%, #222 100%);
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#3c3c3c), to(#222));
-	background-image: linear-gradient(to bottom, #3c3c3c 0%, #222 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff3c3c3c', endColorstr='#ff222222', GradientType=0);
-	filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-	background-repeat: repeat-x;
+	background-color: black;
 }
 
 .channel-content {
@@ -596,13 +657,13 @@ ul {
 }
 
 
-ul, menu, dir {
+.channels-menu ul, menu, dir {
 	-moz-padding-start: 22px !important;
 	-webkit-padding-start: 22px !important;
 }
 
 
-ul li {
+.channels-menu ul li {
 	cursor: default;
 	display: -webkit-box;
 	display: -ms-flexbox;
