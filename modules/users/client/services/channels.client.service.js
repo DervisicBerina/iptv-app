@@ -12,8 +12,7 @@
       update: {
         method: 'PUT'
       },
-      channels: getChannels($http),
-      channelUrl: getChannelUrl($http)
+      channels: getChannels($http)
     });
 
 
@@ -60,29 +59,48 @@
 
   }
 
+  function isUserAuthenticated() {
+    var userData = JSON.parse(sessionStorage.getItem('currentUser'));
+    return userData !== null;
+  }
+
   function getChannels($http) {
     return new Promise(function (responseData) {
       var channels = [];
-      var customerAutentication = loginToMiddleware();
-      customerAutentication.then(function (isAuthentication) {
-        if (isAuthentication) {
-          var userData = JSON.parse(sessionStorage.getItem('currentUser'));
-          var req = {
-            method: 'GET',
-            url: 'http://stb.bhmedia.tv:88/interface/api/v2/users/926/tv-channels',
-            headers: {
-              'Accept': 'application/json',
-              'Authorization': 'Bearer ' + userData.access_token
-            }
-          };
-          $http(req).then(function (response) {
-            channels = response.data.results;
-            responseData(channels);
-          });
+      if (isUserAuthenticated()) {
+        var req = prepareRequest();
+        $http(req).then(function (response) {
+          channels = response.data.results;
+          responseData(channels);
+        });
+      } else {
+        var customerAutentication = loginToMiddleware();
+        customerAutentication.then(function (isAuthentication) {
+          if (isAuthentication) {
+            var req = prepareRequest();
+            $http(req).then(function (response) {
+              channels = response.data.results;
+              responseData(channels);
+            });
 
-        }
-      });
+          }
+        });
+      }
+
     });
+  }
+
+  function prepareRequest() {
+    var userData = JSON.parse(sessionStorage.getItem('currentUser'));
+    var req = {
+      method: 'GET',
+      url: 'http://stb.bhmedia.tv:88/interface/api/v2/users/926/tv-channels',
+      headers: {
+        'Accept': 'application/json',
+        'Authorization': 'Bearer ' + userData.access_token
+      }
+    };
+    return req;
   }
 
   function getChannelUrl($http, channelId) {

@@ -8,7 +8,6 @@
 
   function ChannelEpgService($resource, $http) {
     var ChannelEpg = $resource('/api/channelEpg', {}, {
-      channelEpg: retrieveChannelEpg($http)
     });
 
     angular.extend(ChannelEpg, {
@@ -20,6 +19,10 @@
   }
 
   function retrieveChannelEpg($http, channelId, numberOfContent) {
+    if (channelId === null || channelId === undefined) {
+      return;
+    }
+
     var EPG_API_URL = 'http://stb.bhmedia.tv:88/interface/api/v2/tv-channels/' + channelId + '/epg?next=' + numberOfContent;
 
     return new Promise(function (responseData) {
