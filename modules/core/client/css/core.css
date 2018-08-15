@@ -61,10 +61,10 @@ a:hover .header-profile-image {
 }
 
 .jwplayer {
-	width: 100% !important;
+	width: 80% !important;
 	height: calc(100% - 150px);
 	float: right;
-	position: static;
+	position: static !important;
 }
 
 .vertical-menu {
