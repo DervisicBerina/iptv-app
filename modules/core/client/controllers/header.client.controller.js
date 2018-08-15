@@ -14,11 +14,15 @@
     vm.authentication = Authentication;
     vm.isCollapsed = false;
     vm.menu = menuService.getMenu('topbar');
+    vm.signOut = signOut;
 
     $scope.$on('$stateChangeSuccess', stateChangeSuccess);
 
+    function signOut() {
+      sessionStorage.removeItem('currentUser');
+    }
+
     function stateChangeSuccess() {
-      // Collapsing the menu after navigation
       vm.isCollapsed = false;
     }
   }

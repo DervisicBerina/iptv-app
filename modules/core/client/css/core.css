@@ -371,12 +371,24 @@ ul {
 }
 /*background channel list*/
 .channel-page{
-
 	background-image: url(/modules/core/client/img/brand/background_image.jpg);
 }
 
+#player3 {
+	display: none;
+}
+
 .player-image {
-	background-image: url(/modules/core/client/img/brand/radio.jpg);
+	background: url(/modules/core/client/img/brand/radio.jpg);
+	min-height: 100%;
+	width: 100%;
+	height: auto;
+	min-width: 1024px;
+	background-size: cover;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 99;
 }
 
 /*media bar css*/
@@ -587,4 +599,19 @@ ul {
 ul, menu, dir {
 	-moz-padding-start: 22px !important;
 	-webkit-padding-start: 22px !important;
+}
+
+
+ul li {
+	cursor: default;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	padding: 5px 0;
+	padding-left: 10px;
+	padding-right: 10px;
+	border-bottom: 1px solid hsla(0,0%,100%,.1);
 }

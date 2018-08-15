@@ -137,5 +137,9 @@
     function playChannel(channelUrl) {
       PlayerService.playChannel(channelUrl);
     }
+
+    $scope.$on("$destroy", function() {
+      PlayerService.stopPlayer();
+    });
   }
 }());

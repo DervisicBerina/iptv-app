@@ -9,14 +9,7 @@
   RadioService.$inject = ['$resource', '$http'];
 
   function RadioService($resource, $http) {
-    var Radio = $resource('/api/radio', {}, {
-      update: {
-        method: 'PUT'
-      },
-      radio: getRadio($http)
-
-    });
-
+    var Radio = $resource('/api/radio', {});
     angular.extend(Radio, {
       loadRadio: function () {
         return getRadio($http);
