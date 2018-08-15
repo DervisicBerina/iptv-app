@@ -375,6 +375,10 @@ ul {
 	background-image: url(/modules/core/client/img/brand/background_image.jpg);
 }
 
+.player-image {
+	background-image: url(/modules/core/client/img/brand/radio.jpg);
+}
+
 /*media bar css*/
 
 .left_icon .shadow {

@@ -1,13 +1,13 @@
-<section>
+<section class="player-image">
   <div class="channel-page">
     <script src="/modules/core/client/css/core.css"></script>
     <!--left menu section-->
     <meta name="viewpoint" content="width=device-width,initial-scale=1">
-    <div style="width:25%; float:left;height: calc(100% - 1px);position: absolute;">
+    <div id="channels-menu">
       <div class="vertical-menu">
         <ul class="channels">
           <li ng-repeat="channel in vm.radioList">
-            <span ng-click="vm.changeCurrentChannel(channel)" class="glyphicon glyphicon-play-circle"
+            <span ng-click="vm.changeCurrentRadioChannel(channel)" class="glyphicon glyphicon-play-circle"
                   style="float: right; color: #ffffff; padding-right: 20px; padding-top: 18px;font-size: 22px;"></span>
             <h4 style="color: #ffffff; text-align:left;padding-left:70px;height:55px;padding-top: 20px;"
                 ng-bind="channel.name"></h4>
@@ -17,25 +17,53 @@
     </div>
 
     <!--player section-->
-    <div id='player' style="width: 75% !important; float: right;position: absolute;"></div>
-    <br/>
+    <div id="player2" style="display: none !important;"></div>
 
     <!--footer section-->
-    <div style=" height:150px; background-color:black;width: 100%;float: left;">
-      <div style="width: 25%;  background-color:black; float: left;">
-        <h4 style="color: white; padding-left: 120px;margin-top: 69px;" ng-bind="vm.currentRadioChannel.name"></h4>
-      </div>
-      <div style="width: 75%;  float:left;background-color:black;">
-        <div class="player">
-          <figure class="left_icon" style="margin-left: 31%;">
-            <div class="btns">
-              <a class="back icon-backward" href="#"></a>
-              <a ng-click="vm.playChannel()" class="play icon-play" href="#"></a>
-              <a class="forward icon-forward" href="#"></a>
-            </div>
-          </figure>
+    <section id="footer" class="channels-footer">
+      <div class="row">
+        <!-- channel-logo section -->
+        <div id="temp-channel-logo" class="col-xs-12 col-sm-1 col-md-1">
+          <h4 class="footer-channel-logo-name" ng-bind="vm.currentChannel.name"></h4>
         </div>
+
+        <!-- temp playing content section -->
+        <div id="temp-channel-temp-content" class="col-xs-12 col-sm-5 col-md-5">
+          <h4 class="channel-content" ng-bind="vm.tempPlayingContent"></h4>
+          <div>
+            <h5 style="float:left; padding-left:15px; padding-top: 20px; font-size: 27px; color: white;" ng-bind="vm.currentRadioChannel.name"></h5>
+          </div>
+        </div>
+
+        <!-- player commands section -->
+        <div class="col-xs-12 col-sm-2 col-md-2">
+          <div class="player">
+            <figure class="left_icon">
+              <div class="btns">
+                <a class="back icon-backward" href="#"></a>
+                <a ng-click="vm.stopPlayer()" class="play icon-play" href="#"></a>
+                <a class="forward icon-forward" href="#"></a>
+              </div>
+            </figure>
+          </div>
+        </div>
+
+        <!-- next playing content section -->
+        <div id="temp-channel-next-content" class="col-xs-12 col-sm-3 col-md-3">
+        </div>
+
+        <div class="col-xs-12 col-sm-1 col-md-1 segment-right" style="margin-top:37px; text-align: center;">
+          <i ng-click="vm.turnOnVolume()" ng-if="vm.volumeOf" class="glyphicon glyphicon-volume-off" style="color: white;margin-top: 10px;"></i>
+          <i ng-click="vm.turnOfVolume()" ng-if="!vm.volumeOf" class="glyphicon glyphicon-volume-up" style="color: white;margin-top: 10px;"></i>
+          <i ng-click="vm.setFullScreen()" style="margin-left: 10px;margin-top: 10px;color: white;" class="glyphicon glyphicon-fullscreen"></i>
+        </div>
+
       </div>
-    </div>
+    </section>
+
+
+
+
+
   </div>
 </section>
