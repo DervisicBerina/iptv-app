@@ -10,135 +10,128 @@
 
   function ChannelListController($scope, ChannelsService, ChannelEpgService, FavoritesService, Authentication, PlayerService) {
 
-    var vm = this;
-    vm.playerActive = true;
-    vm.volumeOf = false;
-    vm.channelUrl = '';
-    vm.tempPlayingContent = '';
-    vm.nextPlayingContent = '';
-    vm.tempPlayingTime = '';
-    vm.nextPlayingTime = '';
-    vm.channelsList = [];
-    vm.favoriteChannelList = [];
-    vm.user = Authentication.user;
-    vm.currentChannel = vm.channelsList[0];
-    vm.changeCurrentChannel = changeCurrentChannel;
-    vm.checkIfInFavorites = checkIfInFavorites;
-    vm.addToFavorites = addToFavorites;
-    vm.playChannel = playChannel;
-    vm.stopPlayer = stopPlayer;
-    vm.turnOnVolume = turnOnVolume;
-    vm.turnOfVolume = turnOfVolume;
-    vm.setFullScreen = setFullScreen;
-    getChannels();
-    getUserFavoriteChannels();
+    $scope.playerActive = true;
+    $scope.volumeOf = false;
+    $scope.channelUrl = '';
+    $scope.tempPlayingContent = '';
+    $scope.nextPlayingContent = '';
+    $scope.tempPlayingTime = '';
+    $scope.nextPlayingTime = '';
+    $scope.channelsList = [];
+    $scope.favoriteChannelList = [];
+    $scope.user = Authentication.user;
+    $scope.currentChannel = $scope.channelsList[0];
 
-    function changeCurrentChannel(channel) {
-      vm.currentChannel = channel;
-      retrieveChannelEpg(channel.id);
-      getChannelUrl(channel.id);
-    }
 
-    function getChannels() {
+    $scope.changeCurrentChannel = function (channel) {
+      $scope.currentChannel = channel;
+      $scope.retrieveChannelEpg(channel.id);
+      $scope.getChannelUrl(channel.id);
+    };
+
+    $scope.getChannels = function () {
       ChannelsService.loadChannels().then(function (data) {
-        vm.channelsList = data;
-        changeCurrentChannel(vm.channelsList[0]);
-        getChannelUrl(vm.currentChannel.id);
+        $scope.channelsList = data;
+        $scope.changeCurrentChannel($scope.channelsList[0]);
+        $scope.getChannelUrl($scope.currentChannel.id);
+        $scope.getUserFavoriteChannels();
       });
-    }
+    };
 
-    function getUserFavoriteChannels() {
+    $scope.getUserFavoriteChannels = function () {
       FavoritesService.retrieveUserFavoriteChannels().then(function (data) {
-        vm.favoriteChannelList = [];
-        vm.favoriteChannelList = data;
+        $scope.favoriteChannelList = [];
+        $scope.favoriteChannelList = data;
       });
-    }
+    };
 
-    function checkIfInFavorites(channelId) {
-      return vm.favoriteChannelList.includes(channelId);
-    }
+    $scope.checkIfInFavorites = function (channelId) {
+      return $scope.favoriteChannelList.includes(channelId);
+    };
 
-    function addToFavorites(channelId) {
-      if (vm.favoriteChannelList.includes(channelId)) {
-        deleteChannelFromFavorites(channelId);
+    $scope.addToFavorites = function (channelId) {
+      if ($scope.favoriteChannelList.includes(channelId)) {
+        $scope.deleteChannelFromFavorites(channelId);
       } else {
         FavoritesService.addFavoriteChannel(channelId).then(function () {
-          vm.favoriteChannelList.push(channelId);
+          $scope.favoriteChannelList.push(channelId);
         });
       }
-      getUserFavoriteChannels();
-    }
+      $scope.getUserFavoriteChannels();
+    };
 
-    function deleteChannelFromFavorites(channelId) {
+    $scope.deleteChannelFromFavorites = function (channelId) {
       FavoritesService.deleteFavoriteChannel(channelId).then(function () {
-        for (var cnt = 0; cnt < vm.favoriteChannelList.length; cnt++) {
-          if (channelId === vm.favoriteChannelList[cnt]) {
-            vm.favoriteChannelList.splice(cnt, 1);
+        for (var cnt = 0; cnt < $scope.favoriteChannelList.length; cnt++) {
+          if (channelId === $scope.favoriteChannelList[cnt]) {
+            $scope.favoriteChannelList.splice(cnt, 1);
           }
         }
       });
-    }
+    };
 
-    function getChannelUrl(channelId) {
+    $scope.getChannelUrl = function (channelId) {
       ChannelsService.getChannelUrl(channelId).then(function (channelUrl) {
-        vm.channelUrl = channelUrl;
-        playChannel(vm.channelUrl);
+        $scope.channelUrl = channelUrl;
+        $scope.playChannel($scope.channelUrl);
       });
 
-    }
+    };
 
-    function retrieveChannelEpg(channelId) {
+    $scope.retrieveChannelEpg = function (channelId) {
       ChannelEpgService.loadChannelEpg(channelId, 2).then(function (channelEpg) {
-        updateCurrentEPG(channelEpg[1]);
-        updateNextEPG(channelEpg[0]);
+        $scope.updateCurrentEPG(channelEpg[1]);
+        $scope.updateNextEPG(channelEpg[0]);
       });
-    }
+    };
 
-    function updateCurrentEPG(epg) {
+    $scope.updateCurrentEPG = function (epg) {
       if (epg !== null && epg !== undefined) {
-        vm.nextPlayingTime = convertToHumanReadableTime(epg.start) + ' - ' + convertToHumanReadableTime(epg.end);
-        vm.nextPlayingContent = epg.name;
+        $scope.nextPlayingTime = $scope.convertToHumanReadableTime(epg.start) + ' - ' + $scope.convertToHumanReadableTime(epg.end);
+        $scope.nextPlayingContent = epg.name;
       }
-    }
+    };
 
-    function updateNextEPG(epg) {
+    $scope.updateNextEPG = function (epg) {
       if (epg !== null && epg !== undefined) {
-        vm.tempPlayingTime = convertToHumanReadableTime(epg.start) + ' - ' + convertToHumanReadableTime(epg.end);
-        vm.tempPlayingContent = epg.name;
+        $scope.tempPlayingTime = $scope.convertToHumanReadableTime(epg.start) + ' - ' + $scope.convertToHumanReadableTime(epg.end);
+        $scope.tempPlayingContent = epg.name;
       }
-    }
+    };
 
-    function convertToHumanReadableTime(pointOfTime) {
+    $scope.convertToHumanReadableTime = function (pointOfTime) {
       var date = new Date(pointOfTime * 1000);
       var hours = date.getHours();
       var minutes = date.getMinutes();
       return (('0' + hours).slice(-2)) + ':' + (('0' + minutes).slice(-2));
-    }
+    };
 
-    function stopPlayer() {
-      vm.playerActive = false;
+    $scope.stopPlayer = function () {
+      $scope.playerActive = false;
       PlayerService.stopPlayer();
-    }
+    };
 
-    function turnOfVolume() {
-      vm.volumeOf = true;
+    $scope.turnOfVolume = function () {
+      $scope.volumeOf = true;
       PlayerService.volumeOf();
-    }
+    };
 
-    function turnOnVolume() {
-      vm.volumeOf = false;
+    $scope.turnOnVolume = function () {
+      $scope.volumeOf = false;
       PlayerService.volumeOn();
-    }
+    };
 
-    function setFullScreen() {
+    $scope.setFullScreen = function () {
       PlayerService.setFullScreen();
-    }
+    };
 
-    function playChannel(channelUrl) {
+    $scope.playChannel = function (channelUrl) {
       PlayerService.playChannel(channelUrl);
-    }
+    };
 
-    $scope.$on("$destroy", function() {
+    $scope.getChannels();
+
+    $scope.$on("$destroy", function () {
       PlayerService.stopPlayer();
     });
   }

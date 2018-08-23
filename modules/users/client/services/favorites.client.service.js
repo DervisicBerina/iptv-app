@@ -7,9 +7,7 @@
   FavoritesService.$inject = ['$resource', '$http'];
 
   function FavoritesService($resource, $http) {
-    var FavoriteChannels = $resource('/api/favorites', {}, {
-      favoriteChannels: retrieveUserFavoriteChannels($http)
-    });
+    var FavoriteChannels = $resource('/api/favorites', {}, { });
 
     angular.extend(FavoriteChannels, {
       retrieveUserFavoriteChannels: function () {
@@ -27,7 +25,12 @@
 
   function retrieveUserFavoriteChannels($http) {
     var userData = JSON.parse(sessionStorage.getItem('currentUser'));
+    if (userData === null || userData === undefined) {
+      return;
+    }
+
     var userId = userData.user_id;
+
     var FAVORITES_API_URL = 'http://stb.bhmedia.tv:88/interface/api/v2/users/' + userId + '/tv-favorites';
 
     return new Promise(function (responseData) {
