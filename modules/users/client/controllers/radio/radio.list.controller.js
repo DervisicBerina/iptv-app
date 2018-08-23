@@ -9,48 +9,45 @@
 
   function RadioListController($scope, RadioService, Authentication, PlayerService) {
 
-    var vm = this;
-    setupJWPlayer();
-    vm.radioList = [];
-    vm.user = Authentication.user;
-    vm.currentRadioChannel = vm.radioList[0];
-    vm.setupJWPlayer = setupJWPlayer;
-    vm.changeCurrentRadioChannel = changeCurrentRadioChannel;
+    $scope.radioList = [];
+    $scope.user = Authentication.user;
+    $scope.currentRadioChannel = $scope.radioList[0];
 
-    function changeCurrentRadioChannel(radioChannel) {
-      vm.currentRadioChannel = radioChannel;
-      playRadioChannel(radioChannel.url);
-    }
+    $scope.changeCurrentRadioChannel = function (radioChannel) {
+      $scope.currentRadioChannel = radioChannel;
+      $scope.playRadioChannel(radioChannel.url);
+    };
 
-    function getRadioChannels() {
+    $scope.getRadioChannels = function () {
       RadioService.loadRadio().then(function (data) {
-        vm.radioList = data;
-        changeCurrentRadioChannel(vm.radioList[0]);
-        playRadioChannel(vm.radioList[1].url);
+        $scope.radioList = data;
+        $scope.changeCurrentRadioChannel($scope.radioList[0]);
+        $scope.playRadioChannel($scope.radioList[1].url);
       });
-    }
+    };
 
-    function playRadioChannel(radioUrl) {
+    $scope.playRadioChannel = function (radioUrl) {
       window.jwplayer('player3').setup({
         file: radioUrl + ';stream.mp3',
         type: 'mp3',
         volume: 50
       });
-    }
+    };
 
-    function setupJWPlayer(radioUrl) {
+    $scope.setupJWPlayer = function (radioUrl) {
       window.jwplayer('player3').setup({
         file: radioUrl + ';stream.mp3',
         type: 'mp3',
         volume: 50,
         autostart: true
       });
-    }
+    };
 
-    $scope.$on("$destroy", function() {
+    $scope.$on("$destroy", function () {
       PlayerService.stopPlayer();
     });
 
-    getRadioChannels();
+    $scope.getRadioChannels();
+    $scope.setupJWPlayer();
   }
 }());

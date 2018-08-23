@@ -7,7 +7,7 @@
       <div class="channels-menu">
         <div class="vertical-menu">
           <ul class="channels">
-            <li ng-repeat="channel in vm.radioList">
+            <li ng-repeat="channel in radioList">
               <div class="channel-content">
                 <span class="name" ng-bind="channel.name"></span>
                 <span class="desc">Radio</span>
@@ -17,7 +17,7 @@
 
                 </div>
               </div>
-              <i ng-click="vm.changeCurrentRadioChannel(channel)" class="glyphicon glyphicon-play-circle"></i>
+              <i ng-click="changeCurrentRadioChannel(channel)" class="glyphicon glyphicon-play-circle"></i>
 
             </li>
           </ul>
@@ -32,14 +32,14 @@
         <div class="row">
           <!-- channel-logo section -->
           <div id="temp-channel-logo" class="col-xs-12 col-sm-1 col-md-1">
-            <h4 class="footer-channel-logo-name" ng-bind="vm.currentChannel.name"></h4>
+            <h4 class="footer-channel-logo-name" ng-bind="currentChannel.name"></h4>
           </div>
 
           <!-- temp playing content section -->
           <div id="temp-channel-temp-content" class="col-xs-12 col-sm-5 col-md-5">
-            <h4 class="channel-content" ng-bind="vm.tempPlayingContent"></h4>
+            <h4 class="channel-content" ng-bind="tempPlayingContent"></h4>
             <div>
-              <h5 style="float:left; padding-left:15px; padding-top: 20px; font-size: 27px; color: white;" ng-bind="vm.currentRadioChannel.name"></h5>
+              <h5 style="float:left; padding-left:15px; padding-top: 20px; font-size: 27px; color: white;" ng-bind="currentRadioChannel.name"></h5>
             </div>
           </div>
 
@@ -48,7 +48,7 @@
             <div class="player">
               <figure class="left_icon">
                 <div class="btns">
-                
+
                 </div>
               </figure>
             </div>
@@ -59,9 +59,9 @@
           </div>
 
           <div class="col-xs-12 col-sm-1 col-md-1 segment-right" style="margin-top:37px; text-align: center;">
-            <i ng-click="vm.turnOnVolume()" ng-if="vm.volumeOf" class="glyphicon glyphicon-volume-off" style="color: white;margin-top: 10px;"></i>
-            <i ng-click="vm.turnOfVolume()" ng-if="!vm.volumeOf" class="glyphicon glyphicon-volume-up" style="color: white;margin-top: 10px;"></i>
-            <i ng-click="vm.setFullScreen()" style="margin-left: 10px;margin-top: 10px;color: white;" class="glyphicon glyphicon-fullscreen"></i>
+            <i ng-click="turnOnVolume()" ng-if="volumeOf" class="glyphicon glyphicon-volume-off" style="color: white;margin-top: 10px;"></i>
+            <i ng-click="turnOfVolume()" ng-if="!volumeOf" class="glyphicon glyphicon-volume-up" style="color: white;margin-top: 10px;"></i>
+            <i ng-click="setFullScreen()" style="margin-left: 10px;margin-top: 10px;color: white;" class="glyphicon glyphicon-fullscreen"></i>
           </div>
 
         </div>
