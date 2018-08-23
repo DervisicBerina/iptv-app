@@ -11,8 +11,7 @@
     var Channels = $resource('/api/channels', {}, {
       update: {
         method: 'PUT'
-      },
-      channels: getChannels($http)
+      }
     });
 
 
