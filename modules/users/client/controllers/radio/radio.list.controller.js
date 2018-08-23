@@ -10,6 +10,7 @@
   function RadioListController($scope, RadioService, Authentication, PlayerService) {
 
     $scope.radioList = [];
+    $scope.volumeOf = false;
     $scope.user = Authentication.user;
     $scope.currentRadioChannel = $scope.radioList[0];
 
@@ -19,10 +20,13 @@
     };
 
     $scope.getRadioChannels = function () {
+      console.log('Load radios');
       RadioService.loadRadio().then(function (data) {
+        console.log('Radios LOADED');
         $scope.radioList = data;
-        $scope.changeCurrentRadioChannel($scope.radioList[0]);
+        $scope.currentRadioChannel = $scope.radioList[0];
         $scope.playRadioChannel($scope.radioList[1].url);
+        $scope.$digest();
       });
     };
 
@@ -34,20 +38,25 @@
       });
     };
 
-    $scope.setupJWPlayer = function (radioUrl) {
-      window.jwplayer('player3').setup({
-        file: radioUrl + ';stream.mp3',
-        type: 'mp3',
-        volume: 50,
-        autostart: true
-      });
+    $scope.turnOfVolume = function () {
+      $scope.volumeOf = true;
+      window.jwplayer('player3').setMute(true);
+    };
+
+    $scope.turnOnVolume = function () {
+      $scope.volumeOf = false;
+      window.jwplayer('player3').setMute(false);
+      window.jwplayer('player3').setVolume(100);
+    };
+
+    $scope.setFullScreen = function () {
+      PlayerService.setFullScreen();
     };
 
     $scope.$on("$destroy", function () {
-      PlayerService.stopPlayer();
+      window.jwplayer('player3').stop();
     });
 
     $scope.getRadioChannels();
-    $scope.setupJWPlayer();
   }
 }());

@@ -9,13 +9,10 @@
           <ul class="channels">
             <li ng-repeat="channel in radioList">
               <div class="channel-content">
-                <span class="name" ng-bind="channel.name"></span>
+                <span class="name">{{ channel.name }}</span>
                 <span class="desc">Radio</span>
               </div>
               <div class="listControl">
-                <div class="playAndList">
-
-                </div>
               </div>
               <i ng-click="changeCurrentRadioChannel(channel)" class="glyphicon glyphicon-play-circle"></i>
 
@@ -32,14 +29,14 @@
         <div class="row">
           <!-- channel-logo section -->
           <div id="temp-channel-logo" class="col-xs-12 col-sm-1 col-md-1">
-            <h4 class="footer-channel-logo-name" ng-bind="currentChannel.name"></h4>
+            <h4 class="footer-channel-logo-name">{{ currentChannel.name }}</h4>
           </div>
 
           <!-- temp playing content section -->
           <div id="temp-channel-temp-content" class="col-xs-12 col-sm-5 col-md-5">
-            <h4 class="channel-content" ng-bind="tempPlayingContent"></h4>
+            <h4 class="channel-content">{{ tempPlayingContent }}</h4>
             <div>
-              <h5 style="float:left; padding-left:15px; padding-top: 20px; font-size: 27px; color: white;" ng-bind="currentRadioChannel.name"></h5>
+              <h5 style="float:left; padding-left:15px; padding-top: 20px; font-size: 27px; color: white;">{{ currentRadioChannel.name }}</h5>
             </div>
           </div>
 
