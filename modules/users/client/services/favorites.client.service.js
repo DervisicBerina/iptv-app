@@ -31,7 +31,7 @@
 
     var userId = userData.user_id;
 
-    var FAVORITES_API_URL = 'http://stb.bhmedia.tv:88/interface/api/v2/users/' + userId + '/tv-favorites';
+    var FAVORITES_API_URL = 'http://eu.xservers.cloud:8888/interface/api/v2/users/' + userId + '/tv-favorites';
 
     return new Promise(function (responseData) {
       var userData = JSON.parse(sessionStorage.getItem('currentUser'));
@@ -66,7 +66,7 @@
         }
       };
 
-      var url = 'http://stb.bhmedia.tv:88/interface/api/v2/users/' + userData.user_id + '/tv-favorites';
+      var url = 'http://eu.xservers.cloud:8888/interface/api/v2/users/' + userData.user_id + '/tv-favorites';
       xhr.open('POST', url, true);
       xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
       xhr.setRequestHeader('Accept', 'application/json');
@@ -91,7 +91,7 @@
         }
       };
 
-      var url = 'http://stb.bhmedia.tv:88/interface/api/v2/users/' + userData.user_id + '/tv-favorites/' + channelId;
+      var url = 'http://eu.xservers.cloud:8888/interface/api/v2/users/' + userData.user_id + '/tv-favorites/' + channelId;
       xhr.open('DELETE', url, true);
       xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
       xhr.setRequestHeader('Accept', 'application/json');

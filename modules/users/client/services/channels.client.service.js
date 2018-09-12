@@ -28,7 +28,7 @@
   }
 
   function loginToMiddleware() {
-    var LOGIN_URL = 'http://stb.bhmedia.tv:88/interface/auth/token.php';
+    var LOGIN_URL = 'http://eu.xservers.cloud:8888/interface/auth/token.php';
     var username = 'alen';
     var password = 'Fahro1990';
     return new Promise(function (response) {
@@ -93,7 +93,7 @@
     var userData = JSON.parse(sessionStorage.getItem('currentUser'));
     var req = {
       method: 'GET',
-      url: 'http://stb.bhmedia.tv:88/interface/api/v2/users/926/tv-channels',
+      url: 'http://eu.xservers.cloud:8888/interface/api/v2/users/111/tv-channels',
       headers: {
         'Accept': 'application/json',
         'Authorization': 'Bearer ' + userData.access_token
@@ -107,7 +107,7 @@
       var userData = JSON.parse(sessionStorage.getItem('currentUser'));
       var req = {
         method: 'GET',
-        url: 'http://stb.bhmedia.tv:88/interface/api/v2/users/926/tv-channels/' + channelId + '/link',
+        url: 'http://eu.xservers.cloud:8888/interface/api/v2/users/111/tv-channels/' + channelId + '/link',
         headers: {
           'Accept': 'application/json',
           'Authorization': 'Bearer ' + userData.access_token

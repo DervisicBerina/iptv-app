@@ -25,7 +25,7 @@
       var userData = JSON.parse(sessionStorage.getItem('currentUser'));
       var req = {
         method: 'GET',
-        url: 'http://stb.bhmedia.tv:88/interface/api/v2/users/926/radio-channels/',
+        url: 'http://eu.xservers.cloud:8888/interface/api/v2/users/111/radio-channels/',
         headers: {
           'Accept': 'application/json',
           'Authorization': 'Bearer ' + userData.access_token

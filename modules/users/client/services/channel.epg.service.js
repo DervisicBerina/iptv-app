@@ -23,7 +23,7 @@
       return;
     }
 
-    var EPG_API_URL = 'http://stb.bhmedia.tv:88/interface/api/v2/tv-channels/' + channelId + '/epg?next=' + numberOfContent;
+    var EPG_API_URL = 'http://eu.xservers.cloud:8888/interface/api/v2/tv-channels/' + channelId + '/epg?next=' + numberOfContent;
 
     return new Promise(function (responseData) {
       var userData = JSON.parse(sessionStorage.getItem('currentUser'));
